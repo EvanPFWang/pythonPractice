@@ -70,17 +70,18 @@ class singlyLinkedList:
 
 	def	clone(self):
 		try:
-			other	=	singlyLinkedList
-			if	self.sz	>	0:
+			other	=	singlyLinkedList()
+			if	not	self.is_empt():
 				other.head	=	self.Node(self.head.elem)//instead of points to creates a new Node for this new instance
-				walk	=	self.head.succ
-				other_tail	=	self.Node(self.tail.elem)
-				while	walk	is	not	None:
-					baby	=	self.Node(walk.elem)
-					other_tail.succ	=	baby
-					other_tail	=	baby
-					walk	=	walk.succ
+				walk1	=	self.head
+				walk2	=	other.head
+				while	walk1.succ	is	not	None:
+					baby	=	self.Node(walk1.succ.elem)
+					walk2.succ	=	baby
+					walk1	=	walk1.succ
+					walk2	=	walk2.succ
 			other.sz	=	self.sz
+			other.tail	=	walk2
 			return	other
 		except	CloneNotSupportedException:
 			return	None
