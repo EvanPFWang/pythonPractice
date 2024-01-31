@@ -85,6 +85,19 @@ class singlyLinkedList:
 			return	other
 		except	CloneNotSupportedException:
 			return	None
+	def reverse(self):
+	    walkP   =   None
+	    curr    =   self.head
+
+	    while   curr    is  not None:
+	        walkF   =   curr.succ
+	        curr.next   =   walkP
+	        walkP   =   curr
+	        curr    =   walkF
+        self.head   =   walkP
+
+
+
 	def hashF(self):
 		h	=	0
 		walk	=	self.head
