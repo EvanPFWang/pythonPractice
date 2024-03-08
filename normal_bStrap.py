@@ -32,7 +32,7 @@ rvX_empirical = rvX[torch.randint(0, n,(n,b))]
 T = 1/n *   rvX_empirical.sum(0)
 
 # compute mean of T_{n,b}
-T_mean = T.mean()
+T_mean = T.mean(dim=0)
 
 v_boot  =   torch.mean((T   -   T_mean)**2)
 v_true  =   p*(1-p)/n
